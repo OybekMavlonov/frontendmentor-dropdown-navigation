@@ -28,6 +28,10 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside);
 });
 
+
+function getIconUrl(iconName: string) {
+  return new URL(`/src/assets/images/${iconName}.svg`, import.meta.url).href
+}
 </script>
 
 <template>
@@ -63,7 +67,8 @@ onBeforeUnmount(() => {
               class="flex gap-3 items-center group text-grey-500 rounded hover:text-black cursor-pointer relative
                    p-1 select-none outline-none data-[disabled]:pointer-events-none font-semibold"
           >
-            <img v-if="item.icon" :src="`src/assets/images/${item.icon}.svg`" alt="icon">
+            <img v-if="item.icon" :src="getIconUrl(item.icon)" alt="icon">
+
             {{ item.title }}
           </div>
         </div>
