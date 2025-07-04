@@ -12,6 +12,10 @@ const emit = defineEmits<{
 }>();
 
 const isOpen = ref(false)
+
+function getIconUrl(iconName: string) {
+  return new URL(`../assets/images/${iconName}.svg`, import.meta.url).href
+}
 </script>
 
 <template>
@@ -57,7 +61,7 @@ const isOpen = ref(false)
               class="flex gap-3 text-base items-center group text-grey-500 rounded hover:text-black cursor-pointer relative
                    px-1 py-1 select-none outline-none data-[disabled]:pointer-events-none"
           >
-            <img v-if="item.icon" :src="`src/assets/images/${item.icon}.svg`" alt="icon">
+            <img v-if="item.icon" :src="getIconUrl(item.icon)" alt="icon">
             {{ item.title }}
           </div>
         </div>
